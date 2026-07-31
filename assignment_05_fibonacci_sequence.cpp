@@ -51,3 +51,92 @@
 #include <iostream>
 using namespace std;
 
+
+
+
+
+#include <iostream>
+using namespace std;
+
+// PART A — Print the First N Terms iteratively
+void printFibonacci(int n) {
+    if (n <= 0) {
+        cout << "Error: Number of terms must be a positive integer." << endl;
+        return;
+    }
+
+    long long first = 0, second = 1;
+
+    cout << "Fibonacci sequence: ";
+    for (int i = 0; i < n; i++) {
+        if (i == 0) {
+            cout << first << " ";
+        } else if (i == 1) {
+            cout << second << " ";
+        } else {
+            long long next = first + second;
+            cout << next << " ";
+            first = second;
+            second = next;
+        }
+    }
+    cout << endl;
+}
+
+// PART B — Check if a Number Belongs to the Sequence iteratively
+bool isFibonacci(long long num) {
+    // Negative numbers are not part of the standard Fibonacci sequence
+    if (num < 0) {
+        return false;
+    }
+
+    long long first = 0, second = 1;
+
+    if (num == first || num == second) {
+        return true;
+    }
+
+    long long next = first + second;
+    while (next <= num) {
+        if (next == num) {
+            return true;
+        }
+        first = second;
+        second = next;
+        next = first + second;
+    }
+
+    return false;
+}
+
+int main() {
+    int choice;
+
+    cout << "========================================" << endl;
+    cout << "      FIBONACCI SEQUENCE PROGRAM        " << endl;
+    cout << "========================================" << endl;
+    cout << "1. Print the first N terms (Part A)" << endl;
+    cout << "2. Check if a number belongs to the sequence (Part B)" << endl;
+    cout << "Enter your choice (1-2): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        int n;
+        cout << "How many terms? ";
+        cin >> n;
+        printFibonacci(n);
+    } else if (choice == 2) {
+        long long target;
+        cout << "Enter a number to check: ";
+        cin >> target;
+
+        if (isFibonacci(target)) {
+            cout << target << " is a Fibonacci number." << endl;
+        } else {
+            cout << target << " is NOT a Fibonacci number." << endl;
+        }
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
