@@ -42,3 +42,86 @@
 #include <iostream>
 using namespace std;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+// Function to calculate the sum of array elements
+int calculateSum(const int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// Function to calculate the average of array elements
+double calculateAverage(const int arr[], int size) {
+    int sum = calculateSum(arr, size);
+    return static_cast<double>(sum) / size; // Cast to double for floating-point division
+}
+
+// Function to find the maximum element in the selected array
+int findMaximum(const int arr[], int size) {
+    int maxVal = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > maxVal) {
+            maxVal = arr[i];
+        }
+    }
+    return maxVal;
+}
+
+// Function to find the minimum element in the selected array
+int findMinimum(const int arr[], int size) {
+    int minVal = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < minVal) {
+            minVal = arr[i];
+        }
+    }
+    return minVal;
+}
+
+int main() {
+    int n;
+    
+    cout << "How many numbers? ";
+    cin >> n;
+    
+    // Validate that N is a positive (+) integer
+    if (n <= 0) {
+        cout << "Error: Number of elements must be greater than 0." << endl;
+        return 1;
+    }
+    
+    int numbers[n];
+    
+    for (int i = 0; i < n; i++) {
+        cout << "Enter number " << (i + 1) << ": ";
+        cin >> numbers[i];
+    }
+    
+    cout << endl << "Results:" << endl;
+    cout << "Sum:     " << calculateSum(numbers, n) << endl;
+    cout << "Average: " << calculateAverage(numbers, n) << endl;
+    cout << "Maximum: " << findMaximum(numbers, n) << endl;
+    cout << "Minimum: " << findMinimum(numbers, n) << endl;
+    
+    return 0;
+}
+
